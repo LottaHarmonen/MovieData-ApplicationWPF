@@ -8,11 +8,6 @@ The Movie Application is a WPF (Windows Presentation Foundation) application tha
 - Fetch movie data using the RapidAPI service.
 - MVVM architecture for separation of concerns and maintainability.
 
-## Requirements
-- .NET Framework 4.7.2 or later
-- Visual Studio (or any compatible IDE)
-- RapidAPI key (see Configuration section)
-
 ## Configuration
 RapidAPI Integration:
 - Ensure your RapidAPI key is set as an environment variable.
