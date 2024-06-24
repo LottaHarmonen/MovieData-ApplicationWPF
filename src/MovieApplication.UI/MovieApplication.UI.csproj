@@ -9,8 +9,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Views\" />
-    <Folder Include="ViewModels\" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MovieApplication.Services\MovieApplication.Services.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Locator\" />
   </ItemGroup>
 
 </Project>
