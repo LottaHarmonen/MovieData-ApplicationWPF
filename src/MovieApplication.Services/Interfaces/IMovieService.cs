@@ -4,6 +4,6 @@ namespace MovieApplication.Services.Interfaces;
 
 public interface IMovieService
 {
-    Task<List<Movie>?> GetTopMoviesAsync();
+    Task<List<MovieModel>?> GetTopMoviesAsync();
 
 }

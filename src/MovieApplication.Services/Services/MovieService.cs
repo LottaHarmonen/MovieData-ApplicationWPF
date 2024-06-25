@@ -14,12 +14,13 @@ public class MovieService : IMovieService
         _httpClient = factory.CreateClient("RapidApiClient");
     }
 
-    public async Task<List<Movie>?> GetTopMoviesAsync()
+
+    public async Task<List<MovieModel>?> GetTopMoviesAsync()
     {
         var response = await _httpClient.GetAsync(String.Empty);
         response.EnsureSuccessStatusCode();
 
-        var movieList = await response.Content.ReadFromJsonAsync<List<Movie>>();
+        var movieList = await response.Content.ReadFromJsonAsync<List<MovieModel>>();
 
         return movieList;
     }

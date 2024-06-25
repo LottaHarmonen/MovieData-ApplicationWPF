@@ -7,6 +7,8 @@ using MovieApplication.Services.Interfaces;
 using MovieApplication.Services.Services;
 using MovieApplication.UI.ViewModels;
 using System;
+using System.Net.Http;
+using MovieApplication.Models;
 
 namespace MovieApplication.UI
 {
@@ -28,27 +30,33 @@ namespace MovieApplication.UI
         private void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<MainWindow>();
+            string apiKey = Environment.GetEnvironmentVariable("RAPIDAPI_KEY");
+
             services.AddHttpClient("RapidApiClient", client =>
             {
                 client.BaseAddress = new Uri("https://imdb-top-100-movies.p.rapidapi.com/");
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 client.DefaultRequestHeaders.Add("x-rapidapi-key",
-                    Environment.GetEnvironmentVariable("RAPIDAPI_KEY"));
+                    apiKey);
                 client.DefaultRequestHeaders.Add("x-rapidapi-host", "imdb-top-100-movies.p.rapidapi.com");
             });
 
             services.AddSingleton<IMovieService, MovieService>();
             services.AddTransient<AllMoviesViewModel>();
+            services.AddSingleton<MainWindow>();
 
         }
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            var mainWindow = serviceProvider.GetService<MainWindow>();
+            base.OnStartup(e);
 
-            mainWindow.DataContext = serviceProvider.GetService<AllMoviesViewModel>();
 
-            mainWindow.Show();
+            var mainWindow = serviceProvider.GetRequiredService<MainWindow>();
+            var allMoviesViewModel = serviceProvider.GetRequiredService<AllMoviesViewModel>();
+
+            mainWindow.DataContext = allMoviesViewModel;
+            mainWindow.Show(); 
         }
 
 

@@ -8,12 +8,8 @@
         xmlns:ViewModels="clr-namespace:MovieApplication.UI.ViewModels"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Grid.Resources>
-            <DataTemplate DataType="{x:Type ViewModels:AllMoviesViewModel}">
-                <views:AllMoviesView />
-            </DataTemplate>
 
-        </Grid.Resources>
+    <Grid>
+        <views:AllMoviesView />
     </Grid>
 </Window>

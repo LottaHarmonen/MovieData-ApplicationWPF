@@ -1,6 +1,6 @@
 ﻿namespace MovieApplication.Models;
 
-public class Movie
+public class MovieModel
 {
     public int Rank { get; set; }
     public string Title { get; set; }
@@ -20,7 +20,7 @@ public class Movie
     public List<string> Director { get; set; }
     public List<string> Writers { get; set; }
 
-    public Movie()
+    public MovieModel()
     {
         Genre = new List<string>();
         Director = new List<string>();
