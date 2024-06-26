@@ -43,7 +43,7 @@ namespace MovieApplication.UI
 
             services.AddSingleton<IMovieService, MovieService>();
             services.AddTransient<AllMoviesViewModel>();
-            services.AddSingleton<MainWindow>();
+            services.AddSingleton<MainViewModel>();
 
         }
 
@@ -53,9 +53,10 @@ namespace MovieApplication.UI
 
 
             var mainWindow = serviceProvider.GetRequiredService<MainWindow>();
-            var allMoviesViewModel = serviceProvider.GetRequiredService<AllMoviesViewModel>();
+            var mainViewModel = serviceProvider.GetRequiredService<MainViewModel>();
 
-            mainWindow.DataContext = allMoviesViewModel;
+
+            mainWindow.DataContext = mainViewModel;
             mainWindow.Show(); 
         }
 
