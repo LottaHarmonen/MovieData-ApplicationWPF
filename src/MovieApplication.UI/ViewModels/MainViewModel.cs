@@ -8,11 +8,16 @@ public class MainViewModel : ViewModelBase
 {
     private ViewModelBase _currentViewModel;
 
-    public MainViewModel(AllMoviesViewModel allMoviesViewModel)
+    public MainViewModel(AllMoviesViewModel allMoviesViewModel, MovieDetailViewModel movieDetailViewModel)
     {
-        CurrentViewModel = allMoviesViewModel;  
+        AllMoviesViewModel = allMoviesViewModel;
+        MovieDetailViewModel = movieDetailViewModel;
+
+        CurrentViewModel = allMoviesViewModel;
 
         ShowAllMoviesViewCommand = new RelayCommand(() => CurrentViewModel = allMoviesViewModel);
+        ShowMovieDetailViewCommand = new RelayCommand(() => CurrentViewModel = MovieDetailViewModel);
+
     }
 
     public ViewModelBase CurrentViewModel
@@ -25,5 +30,10 @@ public class MainViewModel : ViewModelBase
         }
     }
 
+
+    public ViewModelBase AllMoviesViewModel { get; }
+    public ViewModelBase MovieDetailViewModel { get; }
+
     public ICommand ShowAllMoviesViewCommand { get; }
+    public ICommand ShowMovieDetailViewCommand { get; }
 }

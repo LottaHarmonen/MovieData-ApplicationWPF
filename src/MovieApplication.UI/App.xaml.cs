@@ -43,6 +43,7 @@ namespace MovieApplication.UI
 
             services.AddSingleton<IMovieService, MovieService>();
             services.AddTransient<AllMoviesViewModel>();
+            services.AddTransient<MovieDetailViewModel>();
             services.AddSingleton<MainViewModel>();
 
         }

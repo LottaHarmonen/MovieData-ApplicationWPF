@@ -8,15 +8,30 @@
         xmlns:ViewModels="clr-namespace:MovieApplication.UI.ViewModels"
         xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml" 
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800"
+        Background="#001F3F" 
+        >
     <Window.Resources>
-        
         <DataTemplate DataType="{x:Type ViewModels:AllMoviesViewModel}">
             <views:AllMoviesView />
         </DataTemplate>
+        <DataTemplate DataType="{x:Type ViewModels:MovieDetailViewModel}">
+            <views:MovieDetailView />
+        </DataTemplate>
+
     </Window.Resources>
 
     <Grid>
-        <ContentControl Content="{Binding CurrentViewModel}" />
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <ListBox Name="Sidebar" SelectionChanged="Sidebar_SelectionChanged" Grid.Column="0">
+            <ListBoxItem Content="All Movies" Tag="{x:Type ViewModels:AllMoviesViewModel}" />
+            <ListBoxItem Content="Additional info" Tag="{x:Type ViewModels:MovieDetailViewModel}" />
+        </ListBox>
+
+        <ContentControl Content="{Binding CurrentViewModel}" Grid.Column="1"/>
     </Grid>
 </Window>

@@ -22,5 +22,23 @@ namespace MovieApplication.UI
             InitializeComponent();
             
         }
+
+        private void Sidebar_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (DataContext is MainViewModel mainViewModel)
+            {
+                if (Sidebar.SelectedItem is ListBoxItem selectedItem && selectedItem.Tag is Type viewModelType)
+                {
+                    if (viewModelType == typeof(AllMoviesViewModel))
+                    {
+                        mainViewModel.CurrentViewModel = mainViewModel.AllMoviesViewModel;
+                    }
+                    else if (viewModelType == typeof(MovieDetailViewModel))
+                    {
+                        mainViewModel.CurrentViewModel = mainViewModel.MovieDetailViewModel;
+                    }
+                }
+            }
+        }
     }
 }
