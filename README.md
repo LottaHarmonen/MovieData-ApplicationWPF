@@ -6,6 +6,7 @@ The Movie Application is a WPF (Windows Presentation Foundation) application tha
 ## Features
 - Display a list of top movies with their titles and descriptions.
 - Fetch movie data using the RapidAPI service.
+- Includes navigation through a sidebar for different views.
 - MVVM architecture for separation of concerns and maintainability.
 
 ## Configuration
